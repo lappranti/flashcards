@@ -50,18 +50,18 @@ export class FlashcardsComponent {
     },
     {
       id: '8',
-      text: 'Les fonctions avancées',
+      text: 'Advanced Functions',
       link: 'advanced-function'
     },
     {
       id: '9',
-      text: 'Les objets en JavaScript',
+      text: 'Objects in JavaScript',
       link: 'objects'
     },
 
     {
       id: '10',
-      text: 'Les événements et les interactions',
+      text: 'Events and Interactions',
       link: 'events'
     }
   ];

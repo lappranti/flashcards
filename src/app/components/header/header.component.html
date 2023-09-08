@@ -16,23 +16,22 @@
 </header>
 
 <!--Sidebar -->
-<div class="modal" [ngClass]="!showModal ? 'hideModal' : ''">
-  <div [class]="'sidebar ' + theme" [ngClass]="showSidebar ? 'show-nav' : ''">
-    <div class="top">
-      <h1 class="title">JavaScript Flashcards</h1>
-      <p class="user-name">ndeurys@gmail.com</p>
-    </div>
-    <ul class="menu">
-      <li
-        class="menu__item"
-        *ngFor="let item of itemMenuList; let i = index"
-        [ngClass]="item.isActive ? 'active' : ''"
-        (click)="selecteLink(item.text)"
-      >
-        <a (click)="gotoPage(item.url)">
-          <i [class]="item.icon"></i>{{ item.text }}</a
-        >
-      </li>
-    </ul>
+
+<div [class]="'sidebar ' + theme" [ngClass]="showSidebar ? 'show-nav' : ''">
+  <div class="top">
+    <h1 class="title">JavaScript Flashcards</h1>
+    <p class="user-name">ndeurys@gmail.com</p>
   </div>
+  <ul class="menu">
+    <li
+      class="menu__item"
+      *ngFor="let item of itemMenuList; let i = index"
+      [ngClass]="item.isActive ? 'active' : ''"
+      (click)="selecteLink(item.text)"
+    >
+      <a (click)="gotoPage(item.url)">
+        <i [class]="item.icon"></i>{{ item.text }}</a
+      >
+    </li>
+  </ul>
 </div>
