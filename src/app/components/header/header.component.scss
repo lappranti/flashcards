@@ -1,0 +1,255 @@
+@import "../../shared/style/variables";
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 32px 24px;
+
+  transition: color 0.4s ease-in-out;
+  * {
+    transition: color 0.4s ease-in-out;
+  }
+
+  &.light {
+    background-color: $VeryDarkBlueDarkModeBackground;
+
+    .logo {
+      color: $WhiteDarkModeTextLightModeElements;
+    }
+
+    i {
+      color: $WhiteDarkModeTextLightModeElements;
+    }
+  }
+  &.dark {
+    background-color: #1f1f1f;
+
+    .logo {
+      color: $WhiteDarkModeTextLightModeElements;
+    }
+
+    i {
+      color: $light;
+    }
+  }
+
+  .bnt-toggle-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    z-index: 10;
+
+    i {
+      font-size: 24px;
+    }
+  }
+
+  .logo {
+    @include typo("h2");
+    font-weight: 600;
+  }
+
+  .theme {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: calc(8px + 0.5vw);
+
+    i {
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    &__btn-conteiner {
+      width: 40px;
+      height: 20px;
+      border-radius: 12px;
+      background-color: $seondary;
+
+      display: flex;
+      align-items: center;
+
+      .btn {
+        width: 14px;
+        height: 14px;
+        background-color: $white;
+        border-radius: 50%;
+        cursor: pointer;
+
+        transition: transform 0.5s ease-in;
+
+        &.light {
+          transform: translateX(3px);
+          left: 3px;
+        }
+        &.dark {
+          transform: translateX(23px);
+          right: 3px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    padding: 24px 16px;
+    gap: 16px;
+  }
+}
+
+.sidebar {
+  width: 298px;
+  height: 100vh;
+  padding: 32px 8px 0;
+
+  position: absolute;
+  top: 0;
+  left: -298px;
+  z-index: 10;
+  transition: left 0.8s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &.show-nav {
+    left: 0;
+
+    &::before {
+      display: block;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 298px;
+    width: calc(100vw - 298px);
+    display: none;
+  }
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 0 0 0 10px;
+  }
+
+  .title {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+  }
+
+  .user-name {
+    color: $DarkGrayLightModeInput;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    letter-spacing: 0.002em;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+
+    &__item {
+      border-radius: 4px;
+
+      * {
+        transition: background 0.2s ease-in-out, color 0.4s ease-in-out;
+      }
+
+      &.active {
+        background-color: #03cbaf14;
+        i,
+        a {
+          color: #03cbaf !important;
+        }
+      }
+
+      i {
+        font-size: 24px;
+      }
+
+      a {
+        @include typo("link");
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.2);
+  //Theme
+  &.dark {
+    background-color: #1e1e1e;
+
+    .title {
+      color: $WhiteDarkModeTextLightModeElements;
+    }
+
+    .menu {
+      border-bottom: 1px solid #d7d8da15;
+
+      &__item {
+        i {
+          color: $DarkGrayLightModeInput;
+        }
+
+        a {
+          color: $WhiteDarkModeTextLightModeElements;
+        }
+
+        &:hover {
+          background-color: #ffffff12;
+          &.active {
+            background-color: #03cbaf14;
+          }
+        }
+      }
+    }
+  }
+
+  &.light {
+    background-color: $ultralight;
+
+    .title {
+      color: $VeryDarkBlueDarkModeBackground;
+    }
+
+    .menu {
+      border-bottom: 0.5px solid #d7d8da80;
+
+      &__item {
+        i {
+          color: $DarkGrayLightModeInput;
+        }
+
+        a {
+          color: $VeryDarkBlueDarkModeBackground;
+        }
+        &:hover {
+          background-color: #00000012;
+
+          &.active {
+            background-color: #03cbaf14;
+          }
+        }
+      }
+    }
+  }
+}

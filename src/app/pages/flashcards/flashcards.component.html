@@ -1,0 +1,21 @@
+<div class="container" [ngClass]="theme" [@fadeInOut] [@.disabled]="isLoading">
+  <app-header [addSidebar]="true" currentPage="flashcards"></app-header>
+  <section [class]="theme">
+    <div class="main">
+      <h3 class="title">All Flashcards</h3>
+      <ul class="flashList">
+        <li
+          class="flashList__item"
+          *ngFor="let item of flashcardList; let i = index"
+          (click)="gotoFlashcard(item.link)"
+        >
+          <span class="item-container">
+            <span>{{ i + 1 }}.</span>
+            <span> {{ item.text }}</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <app-footer></app-footer>
+  </section>
+</div>

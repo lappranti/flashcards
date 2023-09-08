@@ -1,0 +1,104 @@
+@import "../../shared/style/variables";
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  * {
+    transition: background 0.4s ease-in-out;
+  }
+}
+
+section {
+  flex: auto;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.light {
+    background-color: $ultralight;
+
+    li {
+      &:hover {
+        background-color: #00000012;
+        color: $VeryDarkBlueDarkModeBackground;
+        .item-container {
+          border-bottom: none;
+        }
+      }
+      .item-container {
+        border-bottom: 1px solid #00000020;
+      }
+    }
+  }
+
+  &.dark {
+    background-color: $VeryDarkBlueDarkModeBackground;
+
+    li {
+      &:hover {
+        background-color: #ffffff12;
+        color: $WhiteDarkModeTextLightModeElements;
+        .item-container {
+          border-bottom: none;
+        }
+      }
+      .item-container {
+        border-bottom: 1px solid #ffffff20;
+      }
+    }
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 40px;
+
+  .title {
+    padding: 16px 24px;
+    text-align: center;
+    @include typo("h1");
+    font-weight: 600;
+    background-color: $seondary;
+    color: $ultralight;
+  }
+
+  .flashList {
+    flex: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+      cursor: pointer;
+      color: $DarkGrayLightModeInput;
+      @include typo("h3");
+      font-weight: 500;
+
+      .item-container {
+        display: flex;
+        gap: 8px;
+        padding: 16px 0;
+        margin-left: 24px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    padding-bottom: 24px;
+    .title {
+      padding: 16px;
+      @include typo("h2");
+    }
+    .item-container {
+      padding: 16px 0;
+      margin-left: 16px;
+    }
+  }
+}

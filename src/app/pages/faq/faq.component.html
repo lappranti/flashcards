@@ -1,0 +1,17 @@
+<div class="container" [ngClass]="theme" [@fadeInOut] [@.disabled]="isLoading">
+  <app-header [addSidebar]="true" currentPage="faq"></app-header>
+  <section [class]="theme">
+    <div class="main">
+      <ul class="list">
+        <li class="list__item" *ngFor="let faq of faqList">
+          <h4 class="title--item">
+            {{ faq.title }}
+          </h4>
+          <span class="text">{{ faq.text }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <app-footer></app-footer>
+  </section>
+</div>

@@ -1,0 +1,11 @@
+@import "../../shared/style/variables";
+
+.container {
+  text-align: center;
+  padding: 20px;
+  color: $medium;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}

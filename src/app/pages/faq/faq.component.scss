@@ -1,0 +1,89 @@
+@import "../../shared/style/variables";
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  flex: auto;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: all 0.4s ease-in-out;
+  * {
+    transition: all 0.4s ease-in-out;
+  }
+  &.light {
+    background-color: $ultralight;
+
+    .title--item {
+      color: $VeryDarkBlueLightModeText;
+    }
+
+    li {
+      background-color: $light;
+    }
+  }
+
+  &.dark {
+    background-color: $VeryDarkBlueDarkModeBackground;
+
+    .title--item {
+      color: $WhiteDarkModeTextLightModeElements;
+    }
+
+    li {
+      background-color: $DarkBlueDarkModeElements;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  padding: 40px 24px;
+
+  .title {
+    //text-align: center;
+    @include typo("h2");
+    font-weight: 600;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px 16px 13px;
+      border-radius: 4px;
+      @include shadow("2");
+
+      .title--item {
+        @include typo("h3");
+        font-weight: 600;
+      }
+
+      .text {
+        color: $DarkGrayLightModeInput;
+        @include typo("body");
+      }
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    padding: 24px 16px;
+    gap: 24px;
+  }
+}

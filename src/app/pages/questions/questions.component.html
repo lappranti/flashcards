@@ -1,0 +1,80 @@
+<div class="container" [ngClass]="currentTheme" [@fadeInOut]>
+  <div class="progression">
+    <div class="content-progres"></div>
+  </div>
+  <div class="top">
+    <button (click)="handleGotoHome()">
+      <i class="bi bi-arrow-left"></i><span>back</span>
+    </button>
+  </div>
+  <div class="main-section " *ngIf="currentQuestionList">
+    <h2 class="question text">
+      {{ currentQuestion.question }}
+    </h2>
+    <ul class="choix" [ngClass]="choose ? 'after-selected' : ''">
+      <li
+        class="choice element"
+        *ngFor="let choice of currentQuestion.choix; let i = index"
+        (click)="handleSelectedResponse(i)"
+        [id]="i"
+      >
+        <span class="text-question">{{ choice }}</span>
+        <span class="nbr-question">{{ i + 1 }}</span>
+      </li>
+    </ul>
+    <div class="correcte-anser element" *ngIf="choose">
+      <span
+        [ngClass]="
+          selectedResponseIndex != +currentQuestion.response.index
+            ? 'mauvaise-reponse'
+            : ''
+        "
+        >Mauvaise reponse</span
+      >
+      <span
+        [ngClass]="
+          selectedResponseIndex == +currentQuestion.response.index
+            ? 'bonne-reponse'
+            : ''
+        "
+        >Bonne reponse</span
+      >
+    </div>
+    <div class="affichage-resultat" *ngIf="choose && currentIndex >= 10">
+      <h3 class="message">{{ currentMessage }}</h3>
+      <div class="bar-container">
+        <div class="correct">
+          <div
+            class="before correct-before"
+            [style.width.%]="correctAnswers * 10"
+          >
+            {{ correctAnswers * 10 }}%
+          </div>
+        </div>
+        <div class="incorrect">
+          <div
+            class="before incorrect-before"
+            [style.width.%]="incorrectAnswers * 10"
+          >
+            {{ incorrectAnswers * 10 }}%
+          </div>
+        </div>
+      </div>
+    </div>
+    <canvas id="myCanvas"></canvas>
+  </div>
+  <div
+    class="bottom"
+    [ngClass]="choose && currentIndex < 10 ? 'visible' : ''"
+    (click)="handleGetNextQuestion()"
+  >
+    <h2>NEXT</h2>
+  </div>
+  <div
+    class="bottom"
+    [ngClass]="choose && currentIndex >= 10 ? 'visible' : ''"
+    (click)="handleGotoHome()"
+  >
+    <h2>DONE</h2>
+  </div>
+</div>

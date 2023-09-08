@@ -1,0 +1,70 @@
+<div class="container" [ngClass]="theme">
+  <app-header></app-header>
+  <section>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <h1 class="title">Welcome back</h1>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+
+        <div class="email-groupe">
+          <input
+            type="text"
+            placeholder="contact@"
+            id="email"
+            formControlName="email"
+            required
+          />
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('email')?.touched && loginForm.get('email')?.errors
+          "
+        >
+          <div *ngIf="loginForm.get('email')?.errors?.['required']">
+            Email is required
+          </div>
+          <div *ngIf="loginForm.get('email')?.errors?.['email']">
+            Invalid email format
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-group">
+          <span id="toggle-password" *ngIf="isPasswordTouched"
+            ><i class=" bi bi-eye-fill " (click)="togglePasswordView()"></i>
+          </span>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            required
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.errors
+          "
+        >
+          <div *ngIf="loginForm.get('password')?.errors?.['required']">
+            Password is required
+          </div>
+          <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Password must be at least 4 characters
+          </div>
+        </div>
+      </div>
+      <button
+        class="submit"
+        [disabled]="!loginForm.valid"
+        [ngClass]="!loginForm.valid ? 'disabled' : ''"
+      >
+        Log in
+      </button>
+    </form>
+  </section>
+</div>
